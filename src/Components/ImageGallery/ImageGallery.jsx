@@ -3,7 +3,7 @@ import Container from '../Container';
 import s from './ImageGallery.module.css';
 import ImageGalleryItem from '../ImageGalleryItem';
 
-function ImageGallery() {
+function ImageGallery({ onModal }) {
     return (
         <section>
             <Container>
