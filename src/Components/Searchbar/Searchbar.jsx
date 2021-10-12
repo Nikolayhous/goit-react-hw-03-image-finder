@@ -4,10 +4,12 @@ import { Component } from 'react';
 
 class Searchbar extends Component {
     render() {
+        const { onSubmit } = this.props;
+
         return (
             <>
                 <header className={s.Searchbar}>
-                    <form className={s.SearchForm}>
+                    <form className={s.SearchForm} onSubmit={onSubmit}>
                         <button type="submit" className={s.SearchFormBtn}>
                             <span className={s.SearchFormBtnLabel}>Search</span>
                         </button>
@@ -15,8 +17,8 @@ class Searchbar extends Component {
                         <input
                             className={s.SearchFormInput}
                             type="text"
-                            autocomplete="off"
-                            autofocus
+                            autoComplete="off"
+                            autoFocus
                             placeholder="Search images and photos"
                         />
                     </form>
@@ -25,5 +27,9 @@ class Searchbar extends Component {
         );
     }
 }
+
+Searchbar.ropTypes = {
+    onSubmit: PropTypes.func.isRequired,
+};
 
 export default Searchbar;
