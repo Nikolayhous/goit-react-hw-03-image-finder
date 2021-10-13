@@ -1,11 +1,11 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import Searchbar from '../Searchbar';
 import ImageGallery from '../ImageGallery';
 import LoaderSpinner from '../Loader';
 import Button from '../Button';
 import Modal from '../Modal';
 
-class App extends Component {
+class App extends PureComponent {
     state = {
         showModal: false,
     };
@@ -28,7 +28,8 @@ class App extends Component {
                 <ImageGallery onModal={toggleModal} />
                 <LoaderSpinner />
                 <Button />
-                {showModal && <Modal />}
+                <button onClick={toggleModal}>Open-modal</button>
+                {showModal && <Modal onModal={toggleModal} />}
             </>
         );
     }
