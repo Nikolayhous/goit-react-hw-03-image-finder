@@ -1,17 +1,21 @@
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { PureComponent } from 'react';
+import { searchPicturesAPI } from '../../Services/searchPicturesAPI';
 import Searchbar from '../Searchbar';
 import ImageGallery from '../ImageGallery';
 import LoaderSpinner from '../Loader';
 import Button from '../Button';
 import Modal from '../Modal';
-
+searchPicturesAPI();
 class App extends PureComponent {
     state = {
         showModal: false,
+        pixaBayName: '',
     };
 
-    handleSubmit = e => {
-        e.preventDefault();
+    handleFormSubmit = pixaBayName => {
+        this.setState({ pixaBayName });
     };
 
     toggleModal = () => {
@@ -21,10 +25,11 @@ class App extends PureComponent {
     };
     render() {
         const { showModal } = this.state;
-        const { handleSubmit, toggleModal } = this;
+        const { toggleModal, handleFormSubmit } = this;
         return (
             <>
-                <Searchbar onSubmit={handleSubmit} />
+                <ToastContainer autoClose={3000} />
+                <Searchbar onSubmit={handleFormSubmit} />
                 <ImageGallery onModal={toggleModal} />
                 <LoaderSpinner />
                 <Button />
