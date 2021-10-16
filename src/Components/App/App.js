@@ -1,6 +1,7 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Component } from 'react';
+import Container from '../Container';
 import fetchPixaBayAPI from '../../Services/searchPicturesAPI';
 import Searchbar from '../Searchbar';
 import ImageGallery from '../ImageGallery';
@@ -86,33 +87,37 @@ class App extends Component {
         } = this;
         return (
             <>
-                <ToastContainer autoClose={3000} />
                 <Searchbar onSubmit={handleFormSubmit} />
-                {loadingSpinner && <LoaderSpinner />}
-                {pixaBayImages.length !== 0 ? (
-                    <ImageGallery
-                        onModal={ClickImages}
-                        pixaBayImages={pixaBayImages}
-                    />
-                ) : (
-                    searchQuery !== '' && (
-                        <Skeleton message={'Sorry, no results were found.'} />
-                    )
-                )}
-                {loadingSpinner && !showModal && <LoaderSpinner />}
-                {!loadingSpinner && pixaBayImages[0] && (
-                    <Button onClick={handleLoadMoreClick} />
-                )}
-
-                {showModal && (
-                    <Modal onModal={toggleModal}>
-                        {loadingSpinner && <LoaderSpinner />}
-                        <img
-                            src={largeImage.largeImageURL}
-                            alt={largeImage.tags}
+                <Container>
+                    <ToastContainer autoClose={3000} />
+                    {loadingSpinner && <LoaderSpinner />}
+                    {pixaBayImages.length !== 0 ? (
+                        <ImageGallery
+                            onModal={ClickImages}
+                            pixaBayImages={pixaBayImages}
                         />
-                    </Modal>
-                )}
+                    ) : (
+                        searchQuery !== '' && (
+                            <Skeleton
+                                message={'Sorry, no results were found.'}
+                            />
+                        )
+                    )}
+                    {loadingSpinner && !showModal && <LoaderSpinner />}
+                    {!loadingSpinner && pixaBayImages[0] && (
+                        <Button onClick={handleLoadMoreClick} />
+                    )}
+
+                    {showModal && (
+                        <Modal onModal={toggleModal}>
+                            {loadingSpinner && <LoaderSpinner />}
+                            <img
+                                src={largeImage.largeImageURL}
+                                alt={largeImage.tags}
+                            />
+                        </Modal>
+                    )}
+                </Container>
             </>
         );
     }
