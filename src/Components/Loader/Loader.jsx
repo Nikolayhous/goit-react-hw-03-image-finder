@@ -20,11 +20,3 @@ class LoaderSpinner extends Component {
 }
 
 export default LoaderSpinner;
-
-// export default function LoaderBtn() {
-//     return (
-//         <>
-//         <button type='button' className={s.Button}></button>
-//         </>
-//     )
-// }

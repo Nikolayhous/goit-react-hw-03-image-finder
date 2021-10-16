@@ -1,17 +1,16 @@
-import { PureComponent } from 'react';
+import { Component } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 import IconButton from '../IconButton';
 import { ReactComponent as AddIcon } from '../../Icon/add_close.svg';
 import s from './Modal.module.css';
 
-class Modal extends PureComponent {
+class Modal extends Component {
     componentDidMount() {
         window.addEventListener('keydown', this.handleKeyDown);
     }
 
     componentWillUnmount() {
-        console.log('componentWillUnmount');
-
         window.removeEventListener('keydown', this.handleKeyDown);
     }
 
@@ -36,7 +35,7 @@ class Modal extends PureComponent {
                         onClick={this.props.onModal}
                         aria-label="close modal"
                     >
-                        <AddIcon width="35" height="35" fill="black" />
+                        <AddIcon width="35" height="35" />
                     </IconButton>
                 </div>
             </div>,
@@ -44,5 +43,10 @@ class Modal extends PureComponent {
         );
     }
 }
+
+Modal.propTypes = {
+    onModal: PropTypes.func.isRequired,
+    children: PropTypes.node,
+};
 
 export default Modal;

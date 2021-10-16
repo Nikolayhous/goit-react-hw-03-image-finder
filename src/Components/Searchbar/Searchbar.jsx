@@ -1,14 +1,11 @@
 import s from './Search.module.css';
-import { PureComponent } from 'react';
+import { Component } from 'react';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
-class Searchbar extends PureComponent {
+class Searchbar extends Component {
     state = {
-        searchQuery: [],
-    };
-
-    handleNameChange = e => {
-        this.setState({ searchQuery: e.target.value.toLowerCase() });
+        searchQuery: '',
     };
 
     handleSubmit = e => {
@@ -18,9 +15,14 @@ class Searchbar extends PureComponent {
             return toast('Enter a name for the picture!');
         }
 
-        this.props.onSubmit(this.state.pixaBayName);
+        this.props.onSubmit(this.state.searchQuery);
         this.setState({ searchQuery: '' });
     };
+
+    handleNameChange = e => {
+        this.setState({ searchQuery: e.target.value.toLowerCase() });
+    };
+
     render() {
         const { handleSubmit, handleNameChange } = this;
         const { searchQuery } = this.state;
@@ -49,5 +51,9 @@ class Searchbar extends PureComponent {
         );
     }
 }
+
+Searchbar.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+};
 
 export default Searchbar;
