@@ -1,7 +1,6 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Component } from 'react';
-import Container from '../Container';
 import fetchPixaBayAPI from '../../Services/searchPicturesAPI';
 import Searchbar from '../Searchbar';
 import ImageGallery from '../ImageGallery';
@@ -31,9 +30,9 @@ class App extends Component {
     }
 
     fetchPixaBay = () => {
-        const { page, searchQuery } = this.state;
+        const { searchQuery, page } = this.state;
         this.setState({ loadingSpinner: true });
-        return fetchPixaBayAPI(page, searchQuery).then(pixaBayImages => {
+        return fetchPixaBayAPI(searchQuery, page).then(pixaBayImages => {
             this.setState(prevState => ({
                 pixaBayImages: [...prevState.pixaBayImages, ...pixaBayImages],
                 page: prevState.page + 1,
@@ -73,9 +72,9 @@ class App extends Component {
     render() {
         const {
             showModal,
+            searchQuery,
             pixaBayImages,
             loadingSpinner,
-            searchQuery,
             largeImage,
         } = this.state;
 
@@ -87,37 +86,33 @@ class App extends Component {
         } = this;
         return (
             <>
+                <ToastContainer />
                 <Searchbar onSubmit={handleFormSubmit} />
-                <Container>
-                    <ToastContainer autoClose={3000} />
-                    {loadingSpinner && <LoaderSpinner />}
-                    {pixaBayImages.length !== 0 ? (
-                        <ImageGallery
-                            onModal={ClickImages}
-                            pixaBayImages={pixaBayImages}
-                        />
-                    ) : (
-                        searchQuery !== '' && (
-                            <Skeleton
-                                message={'Sorry, no results were found.'}
-                            />
-                        )
-                    )}
-                    {loadingSpinner && !showModal && <LoaderSpinner />}
-                    {!loadingSpinner && pixaBayImages[0] && (
-                        <Button onClick={handleLoadMoreClick} />
-                    )}
 
-                    {showModal && (
-                        <Modal onModal={toggleModal}>
-                            {loadingSpinner && <LoaderSpinner />}
-                            <img
-                                src={largeImage.largeImageURL}
-                                alt={largeImage.tags}
-                            />
-                        </Modal>
-                    )}
-                </Container>
+                {pixaBayImages.length !== 0 ? (
+                    <ImageGallery
+                        onModal={ClickImages}
+                        pixaBayImages={pixaBayImages}
+                    />
+                ) : (
+                    searchQuery !== '' && <Skeleton />
+                )}
+
+                {loadingSpinner && <LoaderSpinner />}
+
+                {pixaBayImages.length !== 0 && (
+                    <Button onClick={handleLoadMoreClick} />
+                )}
+
+                {showModal && (
+                    <Modal onModal={toggleModal}>
+                        {loadingSpinner && <LoaderSpinner />}
+                        <img
+                            src={largeImage.largeImageURL}
+                            alt={largeImage.tags}
+                        />
+                    </Modal>
+                )}
             </>
         );
     }
