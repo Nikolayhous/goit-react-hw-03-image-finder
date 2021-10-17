@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-03-image-finder/static/css/main.ed321270.chunk.css",
-    "main.js": "/goit-react-hw-03-image-finder/static/js/main.ad071404.chunk.js",
-    "main.js.map": "/goit-react-hw-03-image-finder/static/js/main.ad071404.chunk.js.map",
+    "main.css": "/goit-react-hw-03-image-finder/static/css/main.268d58b3.chunk.css",
+    "main.js": "/goit-react-hw-03-image-finder/static/js/main.2fbb6776.chunk.js",
+    "main.js.map": "/goit-react-hw-03-image-finder/static/js/main.2fbb6776.chunk.js.map",
     "runtime-main.js": "/goit-react-hw-03-image-finder/static/js/runtime-main.ef83e745.js",
     "runtime-main.js.map": "/goit-react-hw-03-image-finder/static/js/runtime-main.ef83e745.js.map",
     "static/css/2.e57484aa.chunk.css": "/goit-react-hw-03-image-finder/static/css/2.e57484aa.chunk.css",
-    "static/js/2.f26ac52a.chunk.js": "/goit-react-hw-03-image-finder/static/js/2.f26ac52a.chunk.js",
-    "static/js/2.f26ac52a.chunk.js.map": "/goit-react-hw-03-image-finder/static/js/2.f26ac52a.chunk.js.map",
+    "static/js/2.903cf325.chunk.js": "/goit-react-hw-03-image-finder/static/js/2.903cf325.chunk.js",
+    "static/js/2.903cf325.chunk.js.map": "/goit-react-hw-03-image-finder/static/js/2.903cf325.chunk.js.map",
     "index.html": "/goit-react-hw-03-image-finder/index.html",
     "static/css/2.e57484aa.chunk.css.map": "/goit-react-hw-03-image-finder/static/css/2.e57484aa.chunk.css.map",
-    "static/css/main.ed321270.chunk.css.map": "/goit-react-hw-03-image-finder/static/css/main.ed321270.chunk.css.map",
-    "static/js/2.f26ac52a.chunk.js.LICENSE.txt": "/goit-react-hw-03-image-finder/static/js/2.f26ac52a.chunk.js.LICENSE.txt",
+    "static/css/main.268d58b3.chunk.css.map": "/goit-react-hw-03-image-finder/static/css/main.268d58b3.chunk.css.map",
+    "static/js/2.903cf325.chunk.js.LICENSE.txt": "/goit-react-hw-03-image-finder/static/js/2.903cf325.chunk.js.LICENSE.txt",
     "static/media/add_close.75467465.svg": "/goit-react-hw-03-image-finder/static/media/add_close.75467465.svg",
     "static/media/error.b3f3063a.jpg": "/goit-react-hw-03-image-finder/static/media/error.b3f3063a.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.ef83e745.js",
     "static/css/2.e57484aa.chunk.css",
-    "static/js/2.f26ac52a.chunk.js",
-    "static/css/main.ed321270.chunk.css",
-    "static/js/main.ad071404.chunk.js"
+    "static/js/2.903cf325.chunk.js",
+    "static/css/main.268d58b3.chunk.css",
+    "static/js/main.2fbb6776.chunk.js"
   ]
 }
