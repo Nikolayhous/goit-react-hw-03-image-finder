@@ -2,6 +2,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Component } from 'react';
 import fetchPixaBayAPI from '../../Services/searchPicturesAPI';
+import Container from '../Container';
 import Searchbar from '../Searchbar';
 import ImageGallery from '../ImageGallery';
 import LoaderSpinner from '../Loader';
@@ -88,31 +89,32 @@ class App extends Component {
             <>
                 <ToastContainer />
                 <Searchbar onSubmit={handleFormSubmit} />
-
-                {pixaBayImages.length !== 0 ? (
-                    <ImageGallery
-                        onModal={ClickImages}
-                        pixaBayImages={pixaBayImages}
-                    />
-                ) : (
-                    searchQuery !== '' && <Skeleton />
-                )}
-
-                {loadingSpinner && <LoaderSpinner />}
-
-                {pixaBayImages.length !== 0 && (
-                    <Button onClick={handleLoadMoreClick} />
-                )}
-
-                {showModal && (
-                    <Modal onModal={toggleModal}>
-                        {loadingSpinner && <LoaderSpinner />}
-                        <img
-                            src={largeImage.largeImageURL}
-                            alt={largeImage.tags}
+                <Container>
+                    {pixaBayImages.length !== 0 ? (
+                        <ImageGallery
+                            onModal={ClickImages}
+                            pixaBayImages={pixaBayImages}
                         />
-                    </Modal>
-                )}
+                    ) : (
+                        searchQuery !== '' && <Skeleton />
+                    )}
+
+                    {loadingSpinner && <LoaderSpinner />}
+
+                    {pixaBayImages.length !== 0 && (
+                        <Button onClick={handleLoadMoreClick} />
+                    )}
+
+                    {showModal && (
+                        <Modal onModal={toggleModal}>
+                            {loadingSpinner && <LoaderSpinner />}
+                            <img
+                                src={largeImage.largeImageURL}
+                                alt={largeImage.tags}
+                            />
+                        </Modal>
+                    )}
+                </Container>
             </>
         );
     }
