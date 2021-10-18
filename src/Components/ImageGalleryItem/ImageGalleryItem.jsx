@@ -6,6 +6,7 @@ function ImageGalleryItem({
     onModal,
     webformatURL = defaultImage,
     tags = 'photo',
+    id,
     image,
 }) {
     return (
